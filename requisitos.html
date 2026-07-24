@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=32&h=32" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Requisitos | Casas Fiscales - Ejército Nacional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    spacing: { '13': '3.25rem', '21': '5.25rem', '34': '8.5rem' }
+                }
+            }
+        }
+    </script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js" defer></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" defer></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" defer></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <style>
+        body { font-synthesis: none; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useEffect } = React;
+
+        function App() {
+            useEffect(() => {
+                if (window.lucide?.createIcons) window.lucide.createIcons();
+            }, []);
+
+            return (
+                <div className="min-h-screen bg-slate-50">
+                    {/* Barra de Navegación */}
+                    <header className="bg-[#2B3A24] text-white shadow-lg border-b-4 border-[#D4AF37] sticky top-0 z-50">
+                        <div className="max-w-7xl mx-auto px-5 md:px-8 py-4 flex flex-col md:flex-row justify-between items-center gap-3">
+                            <div className="flex items-center gap-4">
+                                <div className="w-11 h-11 bg-white rounded-full flex items-center justify-center p-1 shadow-inner text-[#2B3A24]">
+                                    <i data-lucide="shield-check" className="w-7 h-7"></i>
+                                </div>
+                                <div>
+                                    <h1 className="text-xl font-bold tracking-wide uppercase">Ejército Nacional de Colombia</h1>
+                                    <p className="text-[#D4AF37] font-medium tracking-widest text-xs">Casas Fiscales - Contratación Oficial</p>
+                                </div>
+                            </div>
+                            <nav className="flex flex-wrap gap-3 text-sm font-medium">
+                                <a href="index.html" className="hover:text-[#D4AF37] transition-colors">Inicio</a>
+                                <a href="convocatoria.html" className="hover:text-[#D4AF37] transition-colors">Convocatoria</a>
+                                <a href="requisitos.html" className="text-[#D4AF37] font-semibold">Requisitos</a>
+                                <a href="proceso-seleccion.html" className="hover:text-[#D4AF37] transition-colors">Proceso</a>
+                                <a href="consulta-tramite.html" className="hover:text-[#D4AF37] transition-colors">Consulta Trámite</a>
+                                <a href="perfiles-validados.html" className="hover:text-[#D4AF37] transition-colors">Perfiles</a>
+                                <a href="contacto.html" className="hover:text-[#D4AF37] transition-colors">Contacto</a>
+                            </nav>
+                        </div>
+                    </header>
+
+                    {/* Contenido Central */}
+                    <main className="max-w-5xl mx-auto px-5 md:px-8 py-10">
+                        <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-8">
+                            <h2 className="text-3xl font-extrabold text-[#2B3A24] border-b-2 border-[#D4AF37] pb-3 mb-6">REQUISITOS DE POSTULACIÓN</h2>
+                            <p className="text-slate-600 mb-8 leading-relaxed">Para garantizar la seguridad, tranquilidad y bienestar de las familias del Ejército Nacional, toda aspirante debe cumplir con los siguientes requisitos indispensables y comprobables:</p>
+
+                            <div className="space-y-6">
+                                <div>
+                                    <h3 className="text-xl font-bold text-[#2B3A24] mb-3 flex items-center gap-2">
+                                        <i data-lucide="user-check" className="text-[#D4AF37] w-5 h-5"></i>
+                                        Perfil Personal
+                                    </h3>
+                                    <ul className="space-y-2 text-slate-700 pl-7">
+                                        <li className="list-disc">Mujer mayor de edad, con identificación vigente y en regla.</li>
+                                        <li className="list-disc">Vocación clara por el cuidado, respeto y formación de niños y niñas.</li>
+                                        <li className="list-disc">Honestidad, responsabilidad absoluta y buen comportamiento.</li>
+                                        <li className="list-disc">Disposición para cumplir protocolos y normativas institucionales.</li>
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <h3 className="text-xl font-bold text-[#2B3A24] mb-3 flex items-center gap-2">
+                                        <i data-lucide="file-text" className="text-[#D4AF37] w-5 h-5"></i>
+                                        Documentos Obligatorios
+                                    </h3>
+                                    <ul className="space-y-2 text-slate-700 pl-7">
+                                        <li className="list-disc">Documento de identidad original y copia ampliada.</li>
+                                        <li className="list-disc">Certificado de antecedentes judiciales y disciplinarios vigentes.</li>
+                                        <li className="list-disc">Certificados de estudios y cursos relacionados.</li>
+                                        <li className="list-disc">Referencias personales y laborales verificables.</li>
+                                        <li className="list-disc">Certificado de salud física y mental.</li>
+                                    </ul>
+                                </div>
+
+                                <div className="bg-amber-50 border-l-4 border-[#D4AF37] p-5 rounded-r-lg">
+                                    <p className="text-sm font-semibold text-[#2B3A24] mb-1">⚠️ IMPORTANTE:</p>
+                                    <p className="text-slate-700">Ningún requisito tiene costo alguno. La presentación de documentos falsos es causal inmediato de exclusión y se pondrá en conocimiento de las autoridades competentes.</p>
+                                </div>
+                            </div>
+
+                            <div className="mt-10 flex flex-wrap gap-4">
+                                <a href="convocatoria.html" className="px-6 py-3 bg-[#2B3A24] text-white rounded-lg font-medium hover:bg-[#1f291c] transition-all">Volver a Convocatoria</a>
+                                <a href="proceso-seleccion.html" className="px-6 py-3 bg-[#D4AF37] text-[#2B3A24] rounded-lg font-medium hover:bg-amber-500 transition-all">Ver Proceso de Selección</a>
+                            </div>
+                        </div>
+                    </main>
+
+                    {/* Pie de Página */}
+                    <footer className="bg-[#2B3A24] text-white py-6 mt-10">
+                        <div className="max-w-7xl mx-auto px-5 text-center text-sm">
+                            <p>© 2026 Casas Fiscales - Ejército Nacional de Colombia | Todos los derechos reservados</p>
+                            <p className="mt-2">🔗 Sitio oficial: casasfiscales-ejercito-nacional.netlify.app</p>
+                            <p className="mt-2 text-amber-300 italic">⚠️ ADVERTENCIA: No se cobra dinero por ningún trámite o etapa del proceso.</p>
+                        </div>
+                    </footer>
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+</html>
