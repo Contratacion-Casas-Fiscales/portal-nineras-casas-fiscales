@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta tu Trámite | Casas Fiscales - Ejército Nacional</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <nav class="barra-navegacion">
+        <div class="contenedor-nav">
+            <div class="logo-institucional">
+                <strong>CASAS FISCALES</strong>
+                <span>Ejército Nacional de Colombia</span>
+            </div>
+            <div class="enlaces-nav">
+                <a href="index.html">Inicio</a>
+                <a href="convocatoria.html">Convocatoria</a>
+                <a href="requisitos.html">Requisitos</a>
+                <a href="proceso-seleccion.html">Proceso de Selección</a>
+                <a href="consulta-tramite.html" class="activo">Consulta tu Trámite</a>
+                <a href="perfiles-validados.html">Perfiles Validados</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="contenedor-principal">
+        <h2>CONSULTA EL ESTADO DE TU TRÁMITE</h2>
+        <p class="subtitulo">Ingresa tu número de documento de identidad para verificar el progreso de tu postulación.</p>
+
+        <div class="buscador-tramite">
+            <label for="documento">Número de Documento de Identidad:</label>
+            <input type="text" id="documento" placeholder="Ej: 123456789" maxlength="15">
+            <button onclick="consultarTramite()" class="boton-principal">🔍 Consultar</button>
+
+            <div id="resultado-consulta" class="resultado"></div>
+            <p class="mensaje-institucional">Información oficial – Casas Fiscales Ejército Nacional</p>
+        </div>
+    </main>
+
+    <footer class="pie-pagina">
+        <p>© 2026 Casas Fiscales - Ejército Nacional de Colombia | Todos los derechos reservados</p>
+        <p>🔗 Sitio oficial: casasfiscales-ejercito-nacional.netlify.app</p>
+        <p>⚠️ ADVERTENCIA: Ningún funcionario o persona está autorizada para cobrar dinero por participar en este proceso de selección.</p>
+    </footer>
+
+    <script src="funciones.js"></script>
+</body>
+</html>
