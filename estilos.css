@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+:root {
+    --verde-institucional: #0B4619;
+    --verde-claro: #146C2E;
+    --gris-oscuro: #2C2C2C;
+    --blanco: #FFFFFF;
+    --gris-fondo: #F5F5F5;
+}
+
+body {
+    background-color: var(--gris-fondo);
+    color: var(--gris-oscuro);
+    line-height: 1.6;
+}
+
+/* Barra de Navegación */
+.barra-navegacion {
+    background-color: var(--verde-institucional);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.contenedor-nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+}
+
+.logo-institucional {
+    color: var(--blanco);
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.enlaces-nav a {
+    color: var(--blanco);
+    text-decoration: none;
+    margin-left: 18px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.enlaces-nav a:hover, .enlaces-nav a.activo {
+    color: #C8E6C9;
+}
+
+/* Contenido General */
+.contenedor-principal {
+    max-width: 1200px;
+    margin: 80px auto 30px;
+    padding: 20px;
+    background: var(--blanco);
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+h2 {
+    color: var(--verde-institucional);
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--verde-claro);
+    padding-bottom: 8px;
+}
+
+.subtitulo {
+    color: var(--gris-oscuro);
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+/* Botones */
+.boton-principal {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: var(--verde-institucional);
+    color: var(--blanco);
+    text-decoration: none;
+    border-radius: 3px;
+    font-weight: 500;
+    margin: 10px 10px 10px 0;
+    border: none;
+    cursor: pointer;
+}
+
+.boton-principal:hover {
+    background-color: var(--verde-claro);
+}
+
+.boton-secundario {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: var(--gris-oscuro);
+    color: var(--blanco);
+    text-decoration: none;
+    border-radius: 3px;
+    font-weight: 500;
+    margin: 10px 10px 10px 0;
+}
+
+.boton-secundario:hover {
+    background-color: #444;
+}
+
+/* Buscador de Trámite */
+.buscador-tramite {
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #FAFAFA;
+}
+
+.buscador-tramite input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 15px;
+}
+
+.resultado {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 3px;
+    font-weight: 500;
+}
+
+.mensaje-institucional {
+    margin-top: 15px;
+    font-size: 13px;
+    color: var(--verde-institucional);
+    text-align: center;
+}
+
+/* Pie de Página */
+.pie-pagina {
+    background-color: var(--gris-oscuro);
+    color: var(--blanco);
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    font-size: 14px;
+}
