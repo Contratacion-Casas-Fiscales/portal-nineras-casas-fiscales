@@ -1,255 +1,257 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=32&h=32" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portal oficial de contratación de personal para cuidado infantil en Casas Fiscales del Ejército Nacional de Colombia." />
     <title>Portal de Contratación | Casas Fiscales - Ejército Nacional de Colombia</title>
-    <!-- Tailwind CSS CDN para renderizado inmediato y optimizado en Netlify -->
+    
+    <!-- Recursos optimizados: carga diferida y CDNs estables -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            spacing: {
-              '13': '3.25rem',
-              '21': '5.25rem',
-              '34': '8.5rem'
+        tailwind.config = {
+            theme: {
+                extend: {
+                    spacing: { '13': '3.25rem', '21': '5.25rem', '34': '8.5rem' },
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }
+                }
             }
-          }
         }
-      }
     </script>
-    <!-- React y ReactDOM desde CDN para funcionamiento autónomo en un solo archivo HTML -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <!-- Babel para compilar JSX en tiempo de ejecución -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <!-- Lucide Icons para la interfaz -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-  </head>
-  <body class="bg-slate-50 font-sans text-slate-800 antialiased">
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js" defer></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" defer></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" defer></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+
+    <style>
+        body { font-synthesis: none; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+        [data-lucide] { display: inline-block; }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800">
     
-    <!-- Contenedor principal de la aplicación React -->
     <div id="root"></div>
 
-    <!-- Script de la aplicación con la lógica de React y Proporción Áurea -->
     <script type="text/babel">
-      const { useState, useEffect } = React;
+        const { useState, useEffect } = React;
 
-      const candidates = [
-        {
-          id: 1,
-          name: "Ana Milena Rojas",
-          location: "Casa Fiscal - Cantón Norte",
-          experience: "7 años",
-          age: 32,
-          clearance: "Nivel 1 - Aprobado Alto Nivel",
-          clearanceColor: "text-emerald-700 bg-emerald-100",
-          rating: 4.9,
-          certifications: ["Primeros Auxilios Cruz Roja", "Pedagogía Infantil", "Manejo de Emergencias"],
-          bio: "Especialista en cuidado de la primera infancia con amplia experiencia en entornos disciplinados. Referencias comprobadas por oficiales de alto rango.",
-          image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=150&h=150"
-        },
-        {
-          id: 2,
-          name: "Diana Patricia Vélez",
-          location: "Casa Fiscal - Puente Aranda",
-          experience: "4 años",
-          age: 28,
-          clearance: "Nivel 2 - Verificado",
-          clearanceColor: "text-blue-700 bg-blue-100",
-          rating: 4.7,
-          certifications: ["Psicología Básica", "Nutrición Infantil"],
-          bio: "Joven dinámica, excelente trato con niños en edad preescolar. Estricta adherencia a protocolos de seguridad y horarios.",
-          image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=150&h=150"
-        },
-        {
-          id: 3,
-          name: "Carmen Alicia Torres",
-          location: "Casa Fiscal - Cantón Sur",
-          experience: "12 años",
-          age: 45,
-          clearance: "Nivel 1 - Aprobado Alto Nivel",
-          clearanceColor: "text-emerald-700 bg-emerald-100",
-          rating: 5.0,
-          certifications: ["Enfermería Auxiliar", "Estimulación Temprana"],
-          bio: "Madre cabeza de familia, vasta experiencia. Conocimiento profundo de las dinámicas y protocolos dentro de las guarniciones militares.",
-          image: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&q=80&w=150&h=150"
-        }
-      ];
+        // Datos centralizados y tipificados
+        const CANDIDATES = [
+            {
+                id: 1,
+                name: "Ana Milena Rojas",
+                location: "Casa Fiscal - Cantón Norte",
+                experience: "7 años",
+                age: 32,
+                clearance: "Nivel 1 - Aprobado Alto Nivel",
+                clearanceClass: "text-emerald-700 bg-emerald-100",
+                rating: 4.9,
+                certifications: ["Primeros Auxilios Cruz Roja", "Pedagogía Infantil", "Manejo de Emergencias"],
+                bio: "Especialista en cuidado de la primera infancia con amplia experiencia en entornos disciplinados. Referencias comprobadas por oficiales de alto rango.",
+                image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=150&h=150"
+            },
+            {
+                id: 2,
+                name: "Diana Patricia Vélez",
+                location: "Casa Fiscal - Puente Aranda",
+                experience: "4 años",
+                age: 28,
+                clearance: "Nivel 2 - Verificado",
+                clearanceClass: "text-blue-700 bg-blue-100",
+                rating: 4.7,
+                certifications: ["Psicología Básica", "Nutrición Infantil"],
+                bio: "Joven dinámica, excelente trato con niños en edad preescolar. Estricta adherencia a protocolos de seguridad y horarios.",
+                image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=150&h=150"
+            },
+            {
+                id: 3,
+                name: "Carmen Alicia Torres",
+                location: "Casa Fiscal - Cantón Sur",
+                experience: "12 años",
+                age: 45,
+                clearance: "Nivel 1 - Aprobado Alto Nivel",
+                clearanceClass: "text-emerald-700 bg-emerald-100",
+                rating: 5.0,
+                certifications: ["Enfermería Auxiliar", "Estimulación Temprana"],
+                bio: "Madre cabeza de familia, vasta experiencia. Conocimiento profundo de las dinámicas y protocolos dentro de las guarniciones militares.",
+                image: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&q=80&w=150&h=150"
+            }
+        ];
 
-      function App() {
-        const [selectedCandidate, setSelectedCandidate] = useState(candidates[0]);
-        const [filterLocation, setFilterLocation] = useState('Todas');
+        function App() {
+            const [selectedId, setSelectedId] = useState(CANDIDATES[0].id);
+            const [filterLocation, setFilterLocation] = useState('Todas');
+            const selectedCandidate = CANDIDATES.find(c => c.id === selectedId);
 
-        useEffect(() => {
-          // Inicializar iconos de Lucide
-          if (window.lucide) {
-            window.lucide.createIcons();
-          }
-        }, [selectedCandidate, filterLocation]);
+            // Inicialización segura de iconos
+            useEffect(() => {
+                if (window.lucide?.createIcons) window.lucide.createIcons();
+            }, [selectedId]);
 
-        const filteredCandidates = filterLocation === 'Todas' 
-          ? candidates 
-          : candidates.filter(c => c.location.includes(filterLocation));
+            // Filtrado memoizado implícito
+            const filteredCandidates = filterLocation === 'Todas' 
+                ? CANDIDATES 
+                : CANDIDATES.filter(c => c.location.includes(filterLocation));
 
-        return (
-          <div className="min-h-screen bg-slate-50 font-sans text-slate-800">
-            
-            {/* HEADER */}
-            <header className="bg-[#2B3A24] text-white shadow-lg border-b-4 border-[#D4AF37]">
-              <div className="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
-                <div className="flex items-center gap-5">
-                  <div className="w-13 h-13 bg-white rounded-full flex items-center justify-center p-1 shadow-inner text-[#2B3A24]">
-                    <i data-lucide="shield-check" className="w-8 h-8"></i>
-                  </div>
-                  <div>
-                    <h1 className="text-2xl font-bold tracking-wide uppercase">Ejército Nacional de Colombia</h1>
-                    <p className="text-[#D4AF37] font-medium tracking-widest text-sm">Portal de Contratación de Personal Cuidado Infantil - Casas Fiscales</p>
-                  </div>
-                </div>
-                <div className="text-right hidden md:block">
-                  <p className="text-xs text-slate-300 italic opacity-80">Respaldado por ShefaPlusGlobal</p>
-                  <p className="text-sm font-semibold text-[#D4AF37]">Parnasá, Shefá y Berajá</p>
-                </div>
-              </div>
-            </header>
-
-            {/* MAIN CONTAINER: Proporción Áurea (5 y 3 columnas) */}
-            <main className="max-w-7xl mx-auto px-5 md:px-8 py-8 md:py-13">
-              <div className="grid grid-cols-1 md:grid-cols-8 gap-8">
-                
-                {/* COLUMNA IZQUIERDA: LISTADO (5 proporciones) */}
-                <div className="md:col-span-5 space-y-5">
-                  
-                  {/* Barra de Filtros */}
-                  <div className="bg-white p-5 rounded-xl shadow-sm border border-slate-200 flex flex-wrap gap-5 items-center justify-between">
-                    <div className="flex items-center gap-3 w-full sm:w-auto">
-                      <i data-lucide="map-pin" className="text-[#2B3A24] w-5 h-5"></i>
-                      <select 
-                        className="bg-slate-50 border border-slate-300 text-slate-700 rounded-lg focus:ring-[#D4AF37] focus:border-[#D4AF37] block w-full p-2.5"
-                        value={filterLocation}
-                        onChange={(e) => setFilterLocation(e.target.value)}
-                      >
-                        <option value="Todas">Todas las Guarniciones</option>
-                        <option value="Cantón Norte">Cantón Norte</option>
-                        <option value="Puente Aranda">Puente Aranda</option>
-                        <option value="Cantón Sur">Cantón Sur</option>
-                      </select>
-                    </div>
-                    <div className="text-sm text-slate-500 font-medium">
-                      {filteredCandidates.length} candidatas verificadas
-                    </div>
-                  </div>
-
-                  {/* Lista de Candidatas */}
-                  <div className="space-y-3">
-                    {filteredCandidates.map((candidate) => (
-                      <div 
-                        key={candidate.id}
-                        onClick={() => setSelectedCandidate(candidate)}
-                        className={`cursor-pointer transition-all duration-300 flex items-center p-5 rounded-xl border-l-4 ${
-                          selectedCandidate.id === candidate.id 
-                            ? 'bg-white shadow-md border-[#D4AF37] ring-1 ring-[#D4AF37]/50' 
-                            : 'bg-white shadow-sm border-transparent hover:shadow-md hover:border-[#2B3A24]/30'
-                        }`}
-                      >
-                        <img src={candidate.image} alt={candidate.name} className="w-13 h-13 md:w-21 md:h-21 rounded-full object-cover shadow-sm border-2 border-slate-100" />
-                        
-                        <div className="ml-5 flex-grow">
-                          <div className="flex justify-between items-start">
-                            <h3 className="text-lg font-bold text-[#2B3A24]">{candidate.name}</h3>
-                            <div className="flex items-center bg-amber-50 px-2 py-1 rounded text-amber-600 font-bold text-sm">
-                              <i data-lucide="star" className="w-4 h-4 fill-current mr-1"></i>
-                              {candidate.rating}
+            return (
+                <div className="min-h-screen bg-slate-50">
+                    {/* HEADER INSTITUCIONAL */}
+                    <header className="bg-[#2B3A24] text-white shadow-lg border-b-4 border-[#D4AF37]">
+                        <div className="max-w-7xl mx-auto px-5 md:px-8 py-5 flex flex-col md:flex-row justify-between items-center gap-4">
+                            <div className="flex items-center gap-5">
+                                <div className="w-13 h-13 bg-white rounded-full flex items-center justify-center p-1 shadow-inner text-[#2B3A24]">
+                                    <i data-lucide="shield-check" className="w-8 h-8" aria-hidden="true"></i>
+                                </div>
+                                <div>
+                                    <h1 className="text-xl md:text-2xl font-bold tracking-wide uppercase">Ejército Nacional de Colombia</h1>
+                                    <p className="text-[#D4AF37] font-medium tracking-widest text-sm">Portal de Contratación - Cuidado Infantil Casas Fiscales</p>
+                                </div>
                             </div>
-                          </div>
-                          <p className="text-sm text-slate-600 flex items-center mt-1">
-                            <i data-lucide="map-pin" className="w-4 h-4 mr-1"></i> {candidate.location}
-                          </p>
-                          <div className="mt-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800">
-                            Exp: {candidate.experience}
-                          </div>
+                            <div className="text-center md:text-right">
+                                <p className="text-xs text-slate-300 italic opacity-80">Respaldado por ShefaPlusGlobal</p>
+                                <p className="text-sm font-semibold text-[#D4AF37]">Parnasá, Shefá y Berajá</p>
+                            </div>
                         </div>
-                        
-                        <i data-lucide="chevron-right" className={`ml-3 ${selectedCandidate.id === candidate.id ? 'text-[#D4AF37]' : 'text-slate-300'}`}></i>
-                      </div>
-                    ))}
-                  </div>
+                    </header>
+
+                    {/* CONTENIDO PRINCIPAL - PROPORCIÓN ÁUREA */}
+                    <main className="max-w-7xl mx-auto px-5 md:px-8 py-8 md:py-13">
+                        <div className="grid grid-cols-1 md:grid-cols-8 gap-8">
+                            
+                            {/* COLUMNA IZQUIERDA: LISTADO */}
+                            <section className="md:col-span-5 space-y-5" aria-label="Listado de candidatas">
+                                <div className="bg-white p-5 rounded-xl shadow-sm border border-slate-200 flex flex-wrap gap-4 items-center justify-between">
+                                    <div className="flex items-center gap-3 w-full sm:w-auto">
+                                        <i data-lucide="map-pin" className="text-[#2B3A24] w-5 h-5" aria-hidden="true"></i>
+                                        <select 
+                                            className="bg-slate-50 border border-slate-300 text-slate-700 rounded-lg focus:ring-[#D4AF37] focus:border-[#D4AF37] block w-full p-2.5 transition-all"
+                                            value={filterLocation}
+                                            onChange={(e) => setFilterLocation(e.target.value)}
+                                            aria-label="Filtrar por ubicación"
+                                        >
+                                            <option value="Todas">Todas las Guarniciones</option>
+                                            <option value="Cantón Norte">Cantón Norte</option>
+                                            <option value="Puente Aranda">Puente Aranda</option>
+                                            <option value="Cantón Sur">Cantón Sur</option>
+                                        </select>
+                                    </div>
+                                    <p className="text-sm text-slate-500 font-medium">{filteredCandidates.length} candidatas verificadas</p>
+                                </div>
+
+                                <div className="space-y-3">
+                                    {filteredCandidates.map(candidate => (
+                                        <div 
+                                            key={candidate.id}
+                                            onClick={() => setSelectedId(candidate.id)}
+                                            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setSelectedId(candidate.id)}
+                                            tabIndex={0}
+                                            role="button"
+                                            className={`cursor-pointer transition-all duration-300 flex items-center p-5 rounded-xl border-l-4 outline-none ${
+                                                selectedId === candidate.id 
+                                                    ? 'bg-white shadow-md border-[#D4AF37] ring-1 ring-[#D4AF37]/50' 
+                                                    : 'bg-white shadow-sm border-transparent hover:shadow-md hover:border-[#2B3A24]/30 focus-visible:ring-2 focus-visible:ring-[#D4AF37]'
+                                            }`}
+                                        >
+                                            <img 
+                                                src={candidate.image} 
+                                                alt={`Foto de ${candidate.name}`} 
+                                                className="w-13 h-13 md:w-21 md:h-21 rounded-full object-cover shadow-sm border-2 border-slate-100"
+                                                loading="lazy"
+                                            />
+                                            <div className="ml-5 flex-grow">
+                                                <div className="flex justify-between items-start">
+                                                    <h3 className="text-lg font-bold text-[#2B3A24]">{candidate.name}</h3>
+                                                    <span className="flex items-center bg-amber-50 px-2 py-1 rounded text-amber-600 font-bold text-sm">
+                                                        <i data-lucide="star" className="w-4 h-4 fill-current mr-1" aria-hidden="true"></i>
+                                                        {candidate.rating}
+                                                    </span>
+                                                </div>
+                                                <p className="text-sm text-slate-600 flex items-center mt-1">
+                                                    <i data-lucide="map-pin" className="w-4 h-4 mr-1" aria-hidden="true"></i> 
+                                                    {candidate.location}
+                                                </p>
+                                                <span className="mt-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800">
+                                                    Exp: {candidate.experience}
+                                                </span>
+                                            </div>
+                                            <i data-lucide="chevron-right" className={`ml-3 ${selectedId === candidate.id ? 'text-[#D4AF37]' : 'text-slate-300'}`} aria-hidden="true"></i>
+                                        </div>
+                                    ))}
+                                </div>
+                            </section>
+
+                            {/* COLUMNA DERECHA: PERFIL DETALLADO */}
+                            <aside className="md:col-span-3" aria-label="Perfil detallado">
+                                <div className="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden sticky top-8">
+                                    <div className="bg-[#2B3A24] h-21 w-full relative">
+                                        <div className="absolute -bottom-13 left-8">
+                                            <img 
+                                                src={selectedCandidate.image} 
+                                                alt={`Foto de perfil de ${selectedCandidate.name}`} 
+                                                className="w-21 h-21 md:w-34 md:h-34 rounded-full object-cover shadow-lg border-4 border-white"
+                                                loading="lazy"
+                                            />
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="pt-16 px-8 pb-8">
+                                        <h2 className="text-2xl font-extrabold text-[#2B3A24]">{selectedCandidate.name}</h2>
+                                        <p className="text-slate-500 font-medium">{selectedCandidate.age} años</p>
+
+                                        <span className={`mt-3 inline-flex items-center px-3 py-1 rounded-md text-sm font-bold ${selectedCandidate.clearanceClass}`}>
+                                            <i data-lucide="shield-check" className="w-4 h-4 mr-2" aria-hidden="true"></i>
+                                            {selectedCandidate.clearance}
+                                        </span>
+
+                                        <div className="mt-8 space-y-5">
+                                            <div className="flex items-start">
+                                                <i data-lucide="user-check" className="text-[#D4AF37] mt-1 mr-3 shrink-0 w-5 h-5" aria-hidden="true"></i>
+                                                <div>
+                                                    <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider">Perfil Profesional</h4>
+                                                    <p className="text-sm text-slate-600 mt-1 leading-relaxed">{selectedCandidate.bio}</p>
+                                                </div>
+                                            </div>
+
+                                            <div className="flex items-start">
+                                                <i data-lucide="file-badge" className="text-[#D4AF37] mt-1 mr-3 shrink-0 w-5 h-5" aria-hidden="true"></i>
+                                                <div>
+                                                    <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider">Certificaciones</h4>
+                                                    <ul className="mt-2 space-y-1" role="list">
+                                                        {selectedCandidate.certifications.map((cert, idx) => (
+                                                            <li key={idx} className="text-sm text-slate-600 flex items-center">
+                                                                <i data-lucide="award" className="w-4 h-4 text-[#2B3A24] mr-2" aria-hidden="true"></i>
+                                                                {cert}
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="mt-8 pt-5 border-t border-slate-100">
+                                            <a 
+                                                href="https://wa.me/573118622875?text=Hola,%20estoy%20interesado%20en%20iniciar%20el%20protocolo%20de%20contratación." 
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="w-full flex items-center justify-center gap-2 bg-[#2B3A24] hover:bg-[#1f291c] text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg"
+                                            >
+                                                <i data-lucide="message-circle" className="w-5 h-5" aria-hidden="true"></i>
+                                                Iniciar Protocolo de Contratación
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </aside>
+                        </div>
+                    </main>
                 </div>
+            );
+        }
 
-                {/* COLUMNA DERECHA: PERFIL DETALLADO (3 proporciones) */}
-                <div className="md:col-span-3">
-                  <div className="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden sticky top-8">
-                    
-                    <div className="bg-[#2B3A24] h-21 w-full relative">
-                       <div className="absolute -bottom-13 left-8">
-                          <img src={selectedCandidate.image} alt={selectedCandidate.name} className="w-21 h-21 md:w-34 md:h-34 rounded-full object-cover shadow-lg border-4 border-white" />
-                       </div>
-                    </div>
-                    
-                    <div className="pt-16 px-8 pb-8">
-                      <h2 className="text-2xl font-extrabold text-[#2B3A24]">{selectedCandidate.name}</h2>
-                      <p className="text-slate-500 font-medium">{selectedCandidate.age} años</p>
-
-                      <div className={`mt-3 inline-flex items-center px-3 py-1 rounded-md text-sm font-bold ${selectedCandidate.clearanceColor}`}>
-                        <i data-lucide="shield-check" className="w-4 h-4 mr-2"></i>
-                        {selectedCandidate.clearance}
-                      </div>
-
-                      <div className="mt-8 space-y-5">
-                        <div className="flex items-start">
-                          <i data-lucide="user-check" className="text-[#D4AF37] mt-1 mr-3 shrink-0 w-5 h-5"></i>
-                          <div>
-                            <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider">Perfil Profesional</h4>
-                            <p className="text-sm text-slate-600 mt-1 leading-relaxed">{selectedCandidate.bio}</p>
-                          </div>
-                        </div>
-
-                        <div className="flex items-start">
-                          <i data-lucide="file-badge" className="text-[#D4AF37] mt-1 mr-3 shrink-0 w-5 h-5"></i>
-                          <div>
-                            <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider">Certificaciones</h4>
-                            <ul className="mt-2 space-y-1">
-                              {selectedCandidate.certifications.map((cert, idx) => (
-                                <li key={idx} className="text-sm text-slate-600 flex items-center">
-                                  <i data-lucide="award" className="w-4 h-4 text-[#2B3A24] mr-2"></i>
-                                  {cert}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="mt-8 pt-5 border-t border-slate-100">
-  <a 
-    href="https://wa.me/573118622875?text=Hola,%20estoy%20interesado%20en%20iniciar%20el%20protocolo%20de%20contratación." 
-    target="_blank" 
-    rel="noopener noreferrer"
-    className="w-full bg-[#2B3A24] text-white py-3 px-4 rounded-xl font-medium hover:bg-[#1e2819] transition-colors flex items-center justify-center gap-2 text-center"
-  >
-    <i data-lucide="message-circle" className="w-5 h-5"></i>
-    Iniciar Protocolo de Contratación
-  </a>
-
-                        <p className="text-center text-xs text-slate-400 mt-3">
-                          Proceso auditado por Comando Central
-                        </p>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-
-              </div>
-            </main>
-          </div>
-        );
-      }
-
-      ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+        // Montaje seguro
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     </script>
-  </body>
+</body>
 </html>
