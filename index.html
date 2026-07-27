@@ -16,7 +16,7 @@
         }
     </script>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js" defer></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" defer></script>
+    <script crossorigin src="https://unpkg.com/react-dom/umd/react-dom.production.min.js" defer></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js" defer></script>
     <script src="https://unpkg.com/lucide@latest" defer></script>
     <style>
@@ -36,7 +36,7 @@
 
             return (
                 <div className="min-h-screen bg-slate-50">
-                    {/* Barra de Navegación */}
+                    {/* ✅ BARRA DE NAVEGACIÓN CON ENLACES CONECTADOS ✅ */}
                     <header className="bg-[#2B3A24] text-white shadow-lg border-b-4 border-[#D4AF37] sticky top-0 z-50">
                         <div className="max-w-7xl mx-auto px-5 md:px-8 py-4 flex flex-col md:flex-row justify-between items-center gap-3">
                             <div className="flex items-center gap-4">
@@ -60,9 +60,8 @@
                         </div>
                     </header>
 
-                    {/* Contenido Central - Página Principal */}
+                    {/* Contenido Principal igual que tenías */}
                     <main>
-                        {/* Sección de Presentación */}
                         <section className="bg-gradient-to-br from-[#2B3A24] to-[#3d4e33] text-white py-16 md:py-24 px-5">
                             <div className="max-w-5xl mx-auto text-center">
                                 <h2 className="text-4xl md:text-5xl font-extrabold mb-6">Casas Fiscales</h2>
@@ -74,7 +73,6 @@
                             </div>
                         </section>
 
-                        {/* Sección de Servicios / Enlaces Rápidos */}
                         <section className="max-w-6xl mx-auto px-5 py-12">
                             <h3 className="text-2xl font-bold text-[#2B3A24] text-center mb-10">¿Qué deseas consultar?</h3>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -98,19 +96,17 @@
                             </div>
                         </section>
 
-                        {/* Aviso Importante */}
                         <section className="max-w-5xl mx-auto px-5 pb-12">
                             <div className="bg-amber-50 border-l-4 border-[#D4AF37] p-6 rounded-r-xl">
                                 <h4 className="font-bold text-[#2B3A24] mb-2 flex items-center gap-2">
                                     <i data-lucide="alert-triangle" className="w-5 h-5"></i>
                                     Aviso de Seguridad
                                 </h4>
-                                <p className="text-slate-700">proceda con la  agilización de procesos. Este es el único sitio web oficial y los únicos canales de contacto autorizados por la institución.</p>
+                                <p className="text-slate-700">Proceda con la agilización de procesos. Este es el único sitio web oficial y los únicos canales de contacto autorizados por la institución.</p>
                             </div>
                         </section>
                     </main>
 
-                    {/* Pie de Página */}
                     <footer className="bg-[#2B3A24] text-white py-6 mt-10">
                         <div className="max-w-7xl mx-auto px-5 text-center text-sm">
                             <p>© 2026 Casas Fiscales - Ejército Nacional de Colombia | Todos los derechos reservados</p>
