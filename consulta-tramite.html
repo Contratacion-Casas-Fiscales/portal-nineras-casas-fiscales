@@ -1,50 +1,155 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta tu Trámite | Casas Fiscales - Ejército Nacional</title>
-    <link rel="stylesheet" href="estilos.css">
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=32&h=32" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Consulta tu Trámite | Casas Fiscales - Ejército Nacional de Colombia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    spacing: { '13': '3.25rem', '21': '5.25rem', '34': '8.5rem' }
+                }
+            }
+        }
+    </script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js" defer></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" defer></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" defer></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <style>
+        body { font-synthesis: none; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+    </style>
 </head>
-<body>
-    <nav class="barra-navegacion">
-        <div class="contenedor-nav">
-            <div class="logo-institucional">
-                <strong>CASAS FISCALES</strong>
-                <span>Ejército Nacional de Colombia</span>
-            </div>
-            <div class="enlaces-nav">
-                <a href="index.html">Inicio</a>
-                <a href="convocatoria.html">Convocatoria</a>
-                <a href="requisitos.html">Requisitos</a>
-                <a href="proceso-seleccion.html">Proceso de Selección</a>
-                <a href="consulta-tramite.html" class="activo">Consulta tu Trámite</a>
-                <a href="perfiles-validados.html">Perfiles Validados</a>
-                <a href="contacto.html">Contacto</a>
-            </div>
-        </div>
-    </nav>
+<body class="bg-slate-50 font-sans text-slate-800">
+    <div id="root"></div>
 
-    <main class="contenedor-principal">
-        <h2>CONSULTA EL ESTADO DE TU TRÁMITE</h2>
-        <p class="subtitulo">Ingresa tu número de documento de identidad para verificar el progreso de tu postulación.</p>
+    <script type="text/babel">
+        const { useEffect, useState } = React;
 
-        <div class="buscador-tramite">
-            <label for="documento">Número de Documento de Identidad:</label>
-            <input type="text" id="documento" placeholder="Ej: 123456789" maxlength="15">
-            <button onclick="consultarTramite()" class="boton-principal">🔍 Consultar</button>
+        function App() {
+            useEffect(() => {
+                if (window.lucide?.createIcons) window.lucide.createIcons();
+            }, []);
 
-            <div id="resultado-consulta" class="resultado"></div>
-            <p class="mensaje-institucional">Información oficial – Casas Fiscales Ejército Nacional</p>
-        </div>
-    </main>
+            // 📌 BASE DE DATOS DE ASPIRANTES - AQUÍ AGREGAS MÁS SI LO DESEAS
+            const aspirantes = [
+                {
+                    cedula: "***", // COLOCA AQUÍ EL NÚMERO DE CÉDULA DE Silda
+                    nombre: "Silda María Mestra Ospino",
+                    cargo: "Cuidadora / Niñera",
+                    ubicacion: "Batallón PM 4 - Medellín, Casas Fiscales",
+                    estado: "APROBADO ✅",
+                    detalle: "En trámite de exámenes médicos y verificación final",
+                    hv: "Hoja de vida recibida y validada (Formato Word y PDF)"
+                }
+                // Puedes agregar más aspirantes aquí copiando el bloque anterior
+            ];
 
-    <footer class="pie-pagina">
-        <p>© 2026 Casas Fiscales - Ejército Nacional de Colombia | Todos los derechos reservados</p>
-        <p>🔗 Sitio oficial: casasfiscales-ejercito-nacional.netlify.app</p>
-        <p>⚠️ ADVERTENCIA: Ningún funcionario o persona está autorizada para cobrar dinero por participar en este proceso de selección.</p>
-    </footer>
+            const [cedula, setCedula] = useState("");
+            const [resultado, setResultado] = useState(null);
 
-    <script src="funciones.js"></script>
+            const consultar = () => {
+                if(!cedula.trim()) {
+                    setResultado({error: "Por favor ingresa tu número de documento"});
+                    return;
+                }
+                const encontrado = aspirantes.find(a => a.cedula === cedula.trim());
+                if(encontrado) setResultado(encontrado);
+                else setResultado({error: "Documento no registrado o en proceso de carga"});
+            };
+
+            return (
+                <div className="min-h-screen bg-slate-50">
+                    {/* BARRA DE NAVEGACIÓN UNIFICADA */}
+                    <header className="bg-[#2B3A24] text-white shadow-lg border-b-4 border-[#D4AF37] sticky top-0 z-50">
+                        <div className="max-w-7xl mx-auto px-5 md:px-8 py-4 flex flex-col md:flex-row justify-between items-center gap-3">
+                            <div className="flex items-center gap-4">
+                                <div className="w-11 h-11 bg-white rounded-full flex items-center justify-center p-1 shadow-inner text-[#2B3A24]">
+                                    <i data-lucide="shield-check" className="w-7 h-7"></i>
+                                </div>
+                                <div>
+                                    <h1 className="text-xl font-bold tracking-wide uppercase">Ejército Nacional de Colombia</h1>
+                                    <p className="text-[#D4AF37] font-medium tracking-widest text-xs">Casas Fiscales - Contratación Oficial</p>
+                                </div>
+                            </div>
+                            <nav className="flex flex-wrap gap-3 text-sm font-medium">
+                                <a href="index.html" className="hover:text-[#D4AF37] transition-colors">Inicio</a>
+                                <a href="convocatoria.html" className="hover:text-[#D4AF37] transition-colors">Convocatoria</a>
+                                <a href="requisitos.html" className="hover:text-[#D4AF37] transition-colors">Requisitos</a>
+                                <a href="proceso-seleccion.html" className="hover:text-[#D4AF37] transition-colors">Proceso</a>
+                                <a href="consulta-tramite.html" className="text-[#D4AF37] font-semibold">Consulta Trámite</a>
+                                <a href="perfiles-validados.html" className="hover:text-[#D4AF37] transition-colors">Perfiles</a>
+                                <a href="contacto.html" className="hover:text-[#D4AF37] transition-colors">Contacto</a>
+                            </nav>
+                        </div>
+                    </header>
+
+                    {/* CONTENIDO PRINCIPAL */}
+                    <main className="max-w-2xl mx-auto px-5 py-12">
+                        <h2 className="text-3xl font-bold text-[#2B3A24] mb-2 text-center">Consulta el Estado de tu Trámite</h2>
+                        <p className="text-center text-slate-600 mb-8">Ingresa tu número de documento de identidad para verificar tu postulación</p>
+
+                        {/* BUSCADOR */}
+                        <div className="bg-white p-6 rounded-xl shadow-md mb-8">
+                            <div className="flex flex-col sm:flex-row gap-3">
+                                <input 
+                                    type="text" 
+                                    value={cedula}
+                                    onChange={(e)=>setCedula(e.target.value)}
+                                    placeholder="Número de Cédula"
+                                    className="flex-1 px-4 py-3 border border-slate-300 rounded-lg text-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent"
+                                />
+                                <button 
+                                    onClick={consultar}
+                                    className="px-6 py-3 bg-[#2B3A24] text-white rounded-lg font-medium hover:bg-[#3d4e33] transition-colors flex items-center gap-2"
+                                >
+                                    <i data-lucide="search" className="w-5 h-5"></i>
+                                    Consultar
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* RESULTADO */}
+                        {resultado && (
+                            <div className={`p-6 rounded-xl shadow-md border ${resultado.error ? "bg-red-50 border-red-200" : "bg-green-50 border-green-300"}`}>
+                                {resultado.error ? (
+                                    <p className="text-red-700 text-center font-medium">{resultado.error}</p>
+                                ) : (
+                                    <div className="space-y-3">
+                                        <div className="flex items-center gap-2">
+                                            <i data-lucide="check-circle" className="w-6 h-6 text-green-600"></i>
+                                            <h3 className="text-xl font-bold text-[#2B3A24]">{resultado.nombre}</h3>
+                                        </div>
+                                        <p className="text-slate-700"><strong>Cargo:</strong> {resultado.cargo}</p>
+                                        <p className="text-slate-700"><strong>Ubicación:</strong> {resultado.ubicacion}</p>
+                                        <div className="bg-green-100 p-3 rounded-lg border border-green-200">
+                                            <p className="font-bold text-green-800 text-lg">{resultado.estado}</p>
+                                            <p className="text-green-700 mt-1">{resultado.detalle}</p>
+                                        </div>
+                                        <p className="text-slate-600 text-sm mt-2">{resultado.hv}</p>
+                                        <p className="text-xs text-slate-500 italic mt-3">Información oficial – Casas Fiscales Ejército Nacional</p>
+                                    </div>
+                                )}
+                            </div>
+                        )}
+                    </main>
+
+                    {/* PIE DE PÁGINA */}
+                    <footer className="bg-[#2B3A24] text-white py-6 mt-10">
+                        <div className="max-w-7xl mx-auto px-5 text-center text-sm">
+                            <p>© 2026 Casas Fiscales - Ejército Nacional de Colombia | Todos los derechos reservados</p>
+                            <p className="mt-2">🔗 Sitio oficial: casasfiscales-ejercito-nacional.netlify.app</p>
+                            <p className="mt-2 text-amber-300 italic">⚠️ ADVERTENCIA: llame a nuestra línea de atención 3118622875.</p>
+                        </div>
+                    </footer>
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
 </body>
 </html>
