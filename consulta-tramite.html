@@ -34,17 +34,55 @@
                 if (window.lucide?.createIcons) window.lucide.createIcons();
             }, []);
 
-            // 📌 BASE DE DATOS DE ASPIRANTES - AQUÍ AGREGAS MÁS SI LO DESEAS
-            const aspirantes = [
-                {
-                    cedula: "1068578253", // COLOCA AQUÍ EL NÚMERO DE CÉDULA DE Silda
-                    nombre: "Silda María Mestra Ospino",
-                    cargo: "Cuidadora / Niñera",
-                    ubicacion: "Batallón PM 4 - Medellín, Casas Fiscales",
-                    estado: "APROBADO ✅",
-                    detalle: "En trámite de agendar cita para exámenes médicos y verificación final",
-                    hv: "Hoja de vida recibida y validada (Formato Word y PDF)"
-                }
+            // 📌 BASE DE DATOS ACTUALIZADA CON SU DOCUMENTO
+const aspirantes = [
+    {
+        cedula: "1068578253",
+        nombre: "Silda María Mestra Ospino",
+        cargo: "Cuidadora / Niñera",
+        ubicacion: "Batallón PM 4 - Medellín, Casas Fiscales",
+        estado: "APROBADO ✅",
+        detalle: "En trámite de exámenes médicos y verificación final",
+        hv: "Hoja de vida recibida y validada (Formato Word y PDF)",
+        enlaceHv: "hojadevida_sildamariamestraospino-1068578253.pdf"
+    }
+];
+
+// ... luego en la sección de resultados:
+
+{resultado && (
+    <div className={`p-6 rounded-xl shadow-md border ${resultado.error ? "bg-red-50 border-red-200" : "bg-green-50 border-green-300"}`}>
+        {resultado.error ? (
+            <p className="text-red-700 text-center font-medium">{resultado.error}</p>
+        ) : (
+            <div className="space-y-3">
+                <div className="flex items-center gap-2">
+                    <i data-lucide="check-circle" className="w-6 h-6 text-green-600"></i>
+                    <h3 className="text-xl font-bold text-[#2B3A24]">{resultado.nombre}</h3>
+                </div>
+                <p className="text-slate-700"><strong>Cargo:</strong> {resultado.cargo}</p>
+                <p className="text-slate-700"><strong>Ubicación:</strong> {resultado.ubicacion}</p>
+                <div className="bg-green-100 p-3 rounded-lg border border-green-200">
+                    <p className="font-bold text-green-800 text-lg">{resultado.estado}</p>
+                    <p className="text-green-700 mt-1">{resultado.detalle}</p>
+                </div>
+                <p className="text-slate-600 text-sm mt-2">{resultado.hv}</p>
+                {/* ✅ ENLACE DIRECTO A SU HOJA DE VIDA */}
+                <a 
+                    href={resultado.enlaceHv} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-[#D4AF37] text-[#2B3A24] rounded-lg font-medium hover:bg-amber-500 transition-colors mt-3"
+                >
+                    <i data-lucide="file-text" className="w-5 h-5"></i>
+                    Ver / Descargar Hoja de Vida
+                </a>
+                <p className="text-xs text-slate-500 italic mt-3">Información oficial – Casas Fiscales Ejército Nacional</p>
+            </div>
+        )}
+    </div>
+)}
+
                 // Puedes agregar más aspirantes aquí copiando el bloque anterior
             ];
 
