@@ -16,11 +16,16 @@
         }
     </script>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js" defer></script>
-    <script crossorigin src="https://unpkg.com/react-dom/umd/react-dom.production.min.js" defer></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" defer></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js" defer></script>
     <script src="https://unpkg.com/lucide@latest" defer></script>
     <style>
-        body { font-synthesis: none; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+        body { 
+            font-synthesis: none; 
+            text-rendering: optimizeLegibility; 
+            -webkit-font-smoothing: antialiased; 
+            -moz-osx-font-smoothing: grayscale;
+        }
     </style>
 </head>
 <body class="bg-slate-50 font-sans text-slate-800">
@@ -35,8 +40,8 @@
             }, []);
 
             return (
-                <div className="min-h-screen bg-slate-50">
-                    {/* ✅ BARRA DE NAVEGACIÓN CON ENLACES CONECTADOS ✅ */}
+                <div className="min-h-screen bg-slate-50 flex flex-col">
+                    {/* Barra de Navegación Oficial - Todos los enlaces conectados */}
                     <header className="bg-[#2B3A24] text-white shadow-lg border-b-4 border-[#D4AF37] sticky top-0 z-50">
                         <div className="max-w-7xl mx-auto px-5 md:px-8 py-4 flex flex-col md:flex-row justify-between items-center gap-3">
                             <div className="flex items-center gap-4">
@@ -50,68 +55,79 @@
                             </div>
                             <nav className="flex flex-wrap gap-3 text-sm font-medium">
                                 <a href="index.html" className="text-[#D4AF37] font-semibold">Inicio</a>
-                                <a href="convocatoria.html" className="hover:text-[#D4AF37] transition-colors">Convocatoria</a>
-                                <a href="requisitos.html" className="hover:text-[#D4AF37] transition-colors">Requisitos</a>
-                                <a href="proceso-seleccion.html" className="hover:text-[#D4AF37] transition-colors">Proceso</a>
-                                <a href="consulta-tramite.html" className="hover:text-[#D4AF37] transition-colors">Consulta Trámite</a>
-                                <a href="perfiles-validados.html" className="hover:text-[#D4AF37] transition-colors">Perfiles</a>
-                                <a href="contacto.html" className="hover:text-[#D4AF37] transition-colors">Contacto</a>
+                                <a href="convocatoria.html" className="hover:text-[#D4AF37] transition-colors duration-200">Convocatoria</a>
+                                <a href="requisitos.html" className="hover:text-[#D4AF37] transition-colors duration-200">Requisitos</a>
+                                <a href="proceso-seleccion.html" className="hover:text-[#D4AF37] transition-colors duration-200">Proceso</a>
+                                <a href="consulta-tramite.html" className="hover:text-[#D4AF37] transition-colors duration-200">Consulta Trámite</a>
+                                <a href="perfiles-validados.html" className="hover:text-[#D4AF37] transition-colors duration-200">Perfiles</a>
+                                <a href="contacto.html" className="hover:text-[#D4AF37] transition-colors duration-200">Contacto</a>
                             </nav>
                         </div>
                     </header>
 
-                    {/* Contenido Principal igual que tenías */}
-                    <main>
+                    {/* Sección de Presentación Principal */}
+                    <main className="flex-grow">
                         <section className="bg-gradient-to-br from-[#2B3A24] to-[#3d4e33] text-white py-16 md:py-24 px-5">
                             <div className="max-w-5xl mx-auto text-center">
-                                <h2 className="text-4xl md:text-5xl font-extrabold mb-6">Casas Fiscales</h2>
-                                <p className="text-xl md:text-2xl font-light mb-8 text-amber-100">Un compromiso con la seguridad y el bienestar de las familias del Ejército Nacional</p>
+                                <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">Casas Fiscales</h2>
+                                <p className="text-xl md:text-2xl font-light mb-8 text-amber-100 leading-relaxed">
+                                    Un compromiso con la seguridad y el bienestar de las familias del Ejército Nacional
+                                </p>
                                 <div className="flex flex-wrap justify-center gap-4">
-                                    <a href="convocatoria.html" className="px-8 py-3 bg-[#D4AF37] text-[#2B3A24] rounded-lg font-bold hover:bg-amber-500 transition-all text-lg">Ver Convocatoria</a>
-                                    <a href="requisitos.html" className="px-8 py-3 border-2 border-white text-white rounded-lg font-medium hover:bg-white/10 transition-all">Conocer Requisitos</a>
+                                    <a href="convocatoria.html" className="px-8 py-3 bg-[#D4AF37] text-[#2B3A24] rounded-lg font-bold hover:bg-amber-500 transition-all duration-300 shadow-md hover:shadow-lg text-lg">
+                                        Ver Convocatoria
+                                    </a>
+                                    <a href="requisitos.html" className="px-8 py-3 border-2 border-white text-white rounded-lg font-medium hover:bg-white/10 transition-all duration-300">
+                                        Conocer Requisitos
+                                    </a>
                                 </div>
                             </div>
                         </section>
 
+                        {/* Sección de Enlaces Rápidos */}
                         <section className="max-w-6xl mx-auto px-5 py-12">
                             <h3 className="text-2xl font-bold text-[#2B3A24] text-center mb-10">¿Qué deseas consultar?</h3>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                <a href="convocatoria.html" className="bg-white p-6 rounded-xl shadow-md border border-slate-200 hover:shadow-lg transition-shadow group">
-                                    <i data-lucide="file-text" className="w-10 h-10 text-[#D4AF37] mb-4 group-hover:scale-110 transition-transform"></i>
+                                <a href="convocatoria.html" className="bg-white p-6 rounded-xl shadow-md border border-slate-200 hover:shadow-lg transition-shadow duration-300 group">
+                                    <i data-lucide="file-text" className="w-10 h-10 text-[#D4AF37] mb-4 group-hover:scale-110 transition-transform duration-300"></i>
                                     <h4 className="text-xl font-bold text-[#2B3A24] mb-2">Convocatoria Vigente</h4>
                                     <p className="text-slate-600">Toda la información oficial sobre el llamado a contratación actual.</p>
                                 </a>
 
-                                <a href="consulta-tramite.html" className="bg-white p-6 rounded-xl shadow-md border border-slate-200 hover:shadow-lg transition-shadow group">
-                                    <i data-lucide="search" className="w-10 h-10 text-[#D4AF37] mb-4 group-hover:scale-110 transition-transform"></i>
+                                <a href="consulta-tramite.html" className="bg-white p-6 rounded-xl shadow-md border border-slate-200 hover:shadow-lg transition-shadow duration-300 group">
+                                    <i data-lucide="search" className="w-10 h-10 text-[#D4AF37] mb-4 group-hover:scale-110 transition-transform duration-300"></i>
                                     <h4 className="text-xl font-bold text-[#2B3A24] mb-2">Consultar mi Trámite</h4>
                                     <p className="text-slate-600">Verifica el estado de tu postulación con tu número de radicado.</p>
                                 </a>
 
-                                <a href="contacto.html" className="bg-white p-6 rounded-xl shadow-md border border-slate-200 hover:shadow-lg transition-shadow group">
-                                    <i data-lucide="message-square" className="w-10 h-10 text-[#D4AF37] mb-4 group-hover:scale-110 transition-transform"></i>
+                                <a href="contacto.html" className="bg-white p-6 rounded-xl shadow-md border border-slate-200 hover:shadow-lg transition-shadow duration-300 group">
+                                    <i data-lucide="message-square" className="w-10 h-10 text-[#D4AF37] mb-4 group-hover:scale-110 transition-transform duration-300"></i>
                                     <h4 className="text-xl font-bold text-[#2B3A24] mb-2">Contacto Oficial</h4>
                                     <p className="text-slate-600">Comunícate con nosotros por los canales autorizados.</p>
                                 </a>
                             </div>
                         </section>
 
+                        {/* Aviso Importante de Seguridad */}
                         <section className="max-w-5xl mx-auto px-5 pb-12">
                             <div className="bg-amber-50 border-l-4 border-[#D4AF37] p-6 rounded-r-xl">
                                 <h4 className="font-bold text-[#2B3A24] mb-2 flex items-center gap-2">
                                     <i data-lucide="alert-triangle" className="w-5 h-5"></i>
                                     Aviso de Seguridad
                                 </h4>
-                                <p className="text-slate-700">Proceda con la agilización de procesos. Este es el único sitio web oficial y los únicos canales de contacto autorizados por la institución.</p>
+                                <p className="text-slate-700 leading-relaxed">
+                                    Proceda con la agilización de procesos. Este es el único sitio web oficial y los únicos canales de contacto autorizados por la institución. No se aceptan ni se gestionan trámites por redes sociales o terceros.
+                                </p>
                             </div>
                         </section>
                     </main>
 
+                    {/* Pie de Página Institucional */}
                     <footer className="bg-[#2B3A24] text-white py-6 mt-10">
                         <div className="max-w-7xl mx-auto px-5 text-center text-sm">
-                            <p>© 2026 Casas Fiscales - Ejército Nacional de Colombia | Todos los derechos reservados</p>
-                            <p className="mt-2">🔗 Sitio oficial: casasfiscales-ejercito-nacional.netlify.app</p>
-                            <p className="mt-2 text-amber-300 italic">⚠️ ADVERTENCIA: llame a nuestra línea de atención 3118622875.</p>
+                            <p className="mb-2">© 2026 Casas Fiscales - Ejército Nacional de Colombia | Todos los derechos reservados</p>
+                            <p className="mb-2">🔗 Sitio oficial: casasfiscales-ejercito-nacional.netlify.app</p>
+                            <p className="text-amber-300 italic">⚠️ ADVERTENCIA: Para cualquier duda comuníquese a nuestra línea de atención 311 862 2875.</p>
                         </div>
                     </footer>
                 </div>
