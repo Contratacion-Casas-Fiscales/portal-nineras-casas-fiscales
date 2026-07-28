@@ -10,7 +10,11 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    spacing: { '13': '3.25rem', '21': '5.25rem', '34': '8.5rem' }
+                    spacing: { '13': '3.25rem', '21': '5.25rem', '34': '8.5rem' },
+                    colors: {
+                        'ejercito-dark': '#2B3A24',
+                        'oro-oficial': '#D4AF37'
+                    }
                 }
             }
         }
@@ -34,7 +38,7 @@
                 if (window.lucide?.createIcons) window.lucide.createIcons();
             }, []);
 
-// 📌 BASE DE DATOS ACTUALIZADA Y SIN ERRORES
+// 📌 BASE DE DATOS COMPLETA Y SIN ERRORES
 const aspirantes = [
     {
         cedula: "1068578253",
@@ -68,8 +72,7 @@ const aspirantes = [
         estado: "RECIBIDO ✅",
         detalle: "En revisión de documentación y verificación de requisitos",
         hv: "Hoja de vida recibida y en proceso de evaluación",
-        ar
-        chivo_hv: "hojadevida_mirleydallanapachecoperez_1093736383.pdf"
+        archivo_hv: "hojadevida_mirleydallanapachecoperez_1093736383.pdf"
     },
     {
         cedula: "66968203",
@@ -122,7 +125,7 @@ const aspirantes = [
         hv: "Hoja de vida recibida con título técnico y cursos certificados",
         archivo_hv: "hojadevida_yuldamamariacardenasburgos_1002156367.pdf"
     },
-        {
+    {
         cedula: "1113213173",
         nombre: "María Virgilina Landazury",
         nacimiento: "10 de octubre de 1980",
@@ -138,8 +141,7 @@ const aspirantes = [
         detalle: "En revisión de antecedentes y verificación de requisitos",
         hv: "Hoja de vida recibida con estudios completos y experiencia laboral",
         archivo_hv: "hojadevida_mariavirgilinalandazury_1113213173.pdf"
-},
-            
+    }
 ];
 
             const [cedula, setCedula] = useState("");
@@ -159,32 +161,32 @@ const aspirantes = [
             return (
                 <div className="min-h-screen bg-slate-50">
                     {/* BARRA DE NAVEGACIÓN UNIFICADA */}
-                    <header className="bg-[#2B3A24] text-white shadow-lg border-b-4 border-[#D4AF37] sticky top-0 z-50">
+                    <header className="bg-ejercito-dark text-white shadow-lg border-b-4 border-oro-oficial sticky top-0 z-50">
                         <div className="max-w-7xl mx-auto px-5 md:px-8 py-4 flex flex-col md:flex-row justify-between items-center gap-3">
                             <div className="flex items-center gap-4">
-                                <div className="w-11 h-11 bg-white rounded-full flex items-center justify-center p-1 shadow-inner text-[#2B3A24]">
+                                <div className="w-11 h-11 bg-white rounded-full flex items-center justify-center p-1 shadow-inner text-ejercito-dark">
                                     <i data-lucide="shield-check" className="w-7 h-7"></i>
                                 </div>
                                 <div>
                                     <h1 className="text-xl font-bold tracking-wide uppercase">Ejército Nacional de Colombia</h1>
-                                    <p className="text-[#D4AF37] font-medium tracking-widest text-xs">Casas Fiscales - Contratación Oficial</p>
+                                    <p className="text-oro-oficial font-medium tracking-widest text-xs">Casas Fiscales - Contratación Oficial</p>
                                 </div>
                             </div>
                             <nav className="flex flex-wrap gap-3 text-sm font-medium">
-                                <a href="index.html" className="hover:text-[#D4AF37] transition-colors">Inicio</a>
-                                <a href="convocatoria.html" className="hover:text-[#D4AF37] transition-colors">Convocatoria</a>
-                                <a href="requisitos.html" className="hover:text-[#D4AF37] transition-colors">Requisitos</a>
-                                <a href="proceso-seleccion.html" className="hover:text-[#D4AF37] transition-colors">Proceso</a>
-                                <a href="consulta-tramite.html" className="text-[#D4AF37] font-semibold">Consulta Trámite</a>
-                                <a href="perfiles-validados.html" className="hover:text-[#D4AF37] transition-colors">Perfiles</a>
-                                <a href="contacto.html" className="hover:text-[#D4AF37] transition-colors">Contacto</a>
+                                <a href="index.html" className="hover:text-oro-oficial transition-colors">Inicio</a>
+                                <a href="convocatoria.html" className="hover:text-oro-oficial transition-colors">Convocatoria</a>
+                                <a href="requisitos.html" className="hover:text-oro-oficial transition-colors">Requisitos</a>
+                                <a href="proceso-seleccion.html" className="hover:text-oro-oficial transition-colors">Proceso</a>
+                                <a href="consulta-tramite.html" className="text-oro-oficial font-semibold">Consulta Trámite</a>
+                                <a href="perfiles-validados.html" className="hover:text-oro-oficial transition-colors">Perfiles</a>
+                                <a href="contacto.html" className="hover:text-oro-oficial transition-colors">Contacto</a>
                             </nav>
                         </div>
                     </header>
 
                     {/* CONTENIDO PRINCIPAL */}
                     <main className="max-w-2xl mx-auto px-5 py-12">
-                        <h2 className="text-3xl font-bold text-[#2B3A24] mb-2 text-center">Consulta el Estado de tu Trámite</h2>
+                        <h2 className="text-3xl font-bold text-ejercito-dark mb-2 text-center">Consulta el Estado de tu Trámite</h2>
                         <p className="text-center text-slate-600 mb-8">Ingresa tu número de documento de identidad para verificar tu postulación</p>
 
                         {/* BUSCADOR */}
@@ -195,11 +197,11 @@ const aspirantes = [
                                     value={cedula}
                                     onChange={(e)=>setCedula(e.target.value)}
                                     placeholder="Número de Cédula"
-                                    className="flex-1 px-4 py-3 border border-slate-300 rounded-lg text-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent"
+                                    className="flex-1 px-4 py-3 border border-slate-300 rounded-lg text-lg focus:outline-none focus:ring-2 focus:ring-oro-oficial focus:border-transparent"
                                 />
                                 <button 
                                     onClick={consultar}
-                                    className="px-6 py-3 bg-[#2B3A24] text-white rounded-lg font-medium hover:bg-[#3d4e33] transition-colors flex items-center gap-2"
+                                    className="px-6 py-3 bg-ejercito-dark text-white rounded-lg font-medium hover:bg-[#3d4e33] transition-colors flex items-center gap-2"
                                 >
                                     <i data-lucide="search" className="w-5 h-5"></i>
                                     Consultar
@@ -216,7 +218,7 @@ const aspirantes = [
                                     <div className="space-y-4">
                                         <div className="flex items-center gap-2">
                                             <i data-lucide="check-circle" className="w-6 h-6 text-green-600"></i>
-                                            <h3 className="text-xl font-bold text-[#2B3A24]">{resultado.nombre}</h3>
+                                            <h3 className="text-xl font-bold text-ejercito-dark">{resultado.nombre}</h3>
                                         </div>
 
                                         {/* DATOS COMPLETOS DE LA HOJA DE VIDA */}
@@ -231,7 +233,7 @@ const aspirantes = [
                                         </div>
 
                                         <div className="bg-slate-50 p-3 rounded-lg border border-slate-200">
-                                            <p className="font-semibold text-[#2B3A24] mb-1">Perfil:</p>
+                                            <p className="font-semibold text-ejercito-dark mb-1">Perfil:</p>
                                             <p className="text-sm text-slate-700 leading-relaxed">{resultado.perfil}</p>
                                         </div>
 
@@ -248,7 +250,7 @@ const aspirantes = [
                                             href={resultado.archivo_hv} 
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-2 px-5 py-3 bg-[#D4AF37] text-[#2B3A24] rounded-lg font-bold hover:bg-amber-500 transition-colors"
+                                            className="inline-flex items-center gap-2 px-5 py-3 bg-oro-oficial text-ejercito-dark rounded-lg font-bold hover:bg-amber-500 transition-colors"
                                         >
                                             <i data-lucide="file-text" className="w-5 h-5"></i>
                                             Ver / Descargar Hoja de Vida
@@ -262,7 +264,7 @@ const aspirantes = [
                     </main>
 
                     {/* PIE DE PÁGINA */}
-                    <footer className="bg-[#2B3A24] text-white py-6 mt-10">
+                    <footer className="bg-ejercito-dark text-white py-6 mt-10">
                         <div className="max-w-7xl mx-auto px-5 text-center text-sm">
                             <p>© 2026 Casas Fiscales - Ejército Nacional de Colombia | Todos los derechos reservados</p>
                             <p className="mt-2">🔗 Sitio oficial: casasfiscales-ejercito-nacional.netlify.app</p>
