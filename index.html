@@ -1,16 +1,30 @@
 <!DOCTYPE html>
-<html lang="es"> 
+<html lang="es">
 <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=32&h=32" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Consulta tu Trámite | Casas Fiscales - Ejército Nacional de Colombia</title>
+    <meta name="description" content="Portal oficial de contratación para el servicio de Casas Fiscales del Ejército Nacional de Colombia. Convocatorias, requisitos, proceso de selección y consulta de estado de trámite." />
+    <meta name="author" content="Ejército Nacional de Colombia - Casas Fiscales" />
+    <title>Inicio | Casas Fiscales - Ejército Nacional de Colombia</title>
+    
+    <!-- Estilos y librerías -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    spacing: { '13': '3.25rem', '21': '5.25rem', '34': '8.5rem' }
+                    colors: {
+                        'ejercito-dark': '#2B3A24',
+                        'ejercito-light': '#3d4e33',
+                        'oro-oficial': '#D4AF37',
+                        'oro-claro': '#FBBF24'
+                    },
+                    spacing: { 
+                        '13': '3.25rem', 
+                        '21': '5.25rem', 
+                        '34': '8.5rem' 
+                    }
                 }
             }
         }
@@ -20,234 +34,108 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js" defer></script>
     <script src="https://unpkg.com/lucide@latest" defer></script>
     <style>
-        body { font-synthesis: none; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-synthesis: none; 
+            text-rendering: optimizeLegibility; 
+            -webkit-font-smoothing: antialiased; 
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .neuro-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
     </style>
 </head>
 <body class="bg-slate-50 font-sans text-slate-800">
     <div id="root"></div>
 
     <script type="text/babel">
-        const { useEffect, useState } = React;
+        const { useEffect } = React;
 
         function App() {
             useEffect(() => {
                 if (window.lucide?.createIcons) window.lucide.createIcons();
             }, []);
 
-// 📌 BASE DE DATOS ACTUALIZADA Y SIN ERRORES
-const aspirantes = [
-    {
-        cedula: "1068578253",
-        nombre: "Silda María Mestra Ospino",
-        nacimiento: "13 de noviembre de 1986",
-        lugar_nacimiento: "Canalete - Córdoba",
-        direccion: "Carrera 62 N° 58-87",
-        telefono: "3045519561",
-        estado_civil: "Casada",
-        correo: "sildamestra@gmail.com",
-        perfil: "Persona seria, responsable y con muchas ganas de trabajar y de aprender. Me gustan los retos y pienso que estos fortalecen la forma en que nos dirigimos día a día. Pongo especial atención en detalles, hago amigos fácilmente y no se me cierran puertas ante la dificultad. Quiero formar parte de un productivo y exitoso equipo. Aprendo con rapidez nuevas ideas y conceptos y me gusta desarrollar ideas creativas e innovadoras.",
-        cargo: "Cuidadora / Niñera",
-        ubicacion: "Batallón PM 4 - Medellín, Casas Fiscales",
-        estado: "APROBADO ✅",
-        detalle: "En trámite de exámenes médicos y verificación final",
-        hv: "Hoja de vida recibida y validada (Formato Word y PDF)",
-        archivo_hv: "hojadevida_sildamariamestraospino-1068578253.pdf"
-    },
-    {
-        cedula: "1093736383",
-        nombre: "Mirley Dallana Pacheco Pérez",
-        nacimiento: "13 de mayo de 1986",
-        lugar_nacimiento: "De los Patios",
-        direccion: "Av. 0 # 13-76 Barrio San Luis",
-        telefono: "3233915639 - 3002323945",
-        estado_civil: "Soltera",
-        correo: "dayanamedina872@gmail.com",
-        perfil: "Soy una persona dedicada, amante a lo que hago, con metas y superación constante. Cumplo y acato órdenes, respeto las normas y autoridad de mis superiores. Aprendo rápido, cumplo puntualmente los horarios y me destaco por mi optimismo y compromiso. Deseo formar parte de esta institución y cumplir con los objetivos propuestos.",
-        cargo: "Cuidadora / Niñera",
-        ubicacion: "Por asignar según necesidad",
-        estado: "RECIBIDO ✅",
-        detalle: "En revisión de documentación y verificación de requisitos",
-        hv: "Hoja de vida recibida y en proceso de evaluación",
-        archivo_hv: "hojadevida_mirleydallanapachecoperez_1093736383.pdf"
-    },
-    {
-        cedula: "66968203",
-        nombre: "Xiomara Mosquera Garcés",
-        nacimiento: "",
-        lugar_nacimiento: "Candelaria - Valle del Cauca",
-        direccion: "Carrera 28B N° 72J58, Cali Valle",
-        telefono: "3137580492 - 3152211560",
-        estado_civil: "Madre cabeza de familia",
-        correo: "xiomara3932@gmail.com",
-        perfil: "Bachiller académico. Madre cabeza de familia comprometida, con experiencia y muchas ganas de salir adelante. Mi capacidad de aprendizaje y decisión me convierte en la candidata ideal para empresas que buscan crear un equipo innovador y exigente. Me adapto a las necesidades y aprovecho la oportunidad de trabajar para crecer profesionalmente y dar lo mejor de mis cualidades.",
-        cargo: "Cuidadora / Niñera",
-        ubicacion: "Por asignar según necesidad",
-        estado: "RECIBIDO ✅",
-        detalle: "En revisión de antecedentes y perfil",
-        hv: "Hoja de vida recibida con experiencia laboral y certificaciones",
-        archivo_hv: "hojadevida_xiomaramosqueragarces_66968203.pdf"
-    },
-    {
-        cedula: "1129184230",
-        nombre: "María Andrea Ortega Anaya",
-        nacimiento: "25 de agosto de 2003",
-        lugar_nacimiento: "Bogotá D.C.",
-        direccion: "Calle 73 Sur No. 92 - 85 Barrio Nuevo Recreo",
-        telefono: "3128713480",
-        estado_civil: "Soltera",
-        correo: "",
-        perfil: "Persona con capacidad de liderazgo amplia y activa, siempre dispuesta con la mejor actitud para mis labores. Responsable, con experiencia previa en diferentes actividades, manejo de herramientas y conocimientos prácticos. Aprendo con facilidad y me comprometo al máximo con lo que hago.",
-        cargo: "Cuidadora / Niñera",
-        ubicacion: "Por asignar según necesidad",
-        estado: "RECIBIDO ✅",
-        detalle: "En revisión de documentación y verificación de requisitos",
-        hv: "Hoja de vida recibida, Bachiller año 2024",
-        archivo_hv: "hojadevida_mariaandreaortegaanaya_1129184230.pdf"
-    },
-    {
-        cedula: "1002156367",
-        nombre: "Yuldama María Cárdenas Burgos",
-        nacimiento: "15 de enero de 1991",
-        lugar_nacimiento: "Barranquilla - Atlántico",
-        direccion: "Calle 60 #10-26, Barranquilla",
-        telefono: "3243169069",
-        estado_civil: "Soltera",
-        correo: "yuliscardenasburgos@gmail.com",
-        perfil: "Persona responsable, comprometida y con formación técnica en atención a la primera infancia. Cuento con capacidad para cuidar, orientar y acompañar a los niños con calidad humana y profesional. Capacitada en manipulación higiénica de alimentos, trabajo en equipo y desarrollo de actividades dinámicas y creativas.",
-        cargo: "Cuidadora / Niñera",
-        ubicacion: "Por asignar según necesidad",
-        estado: "RECIBIDO ✅",
-        detalle: "En revisión de títulos y certificaciones",
-        hv: "Hoja de vida recibida con título técnico y cursos certificados",
-        archivo_hv: "hojadevida_yuldamamariacardenasburgos_1002156367.pdf"
-    }
-];
-
-            const [cedula, setCedula] = useState("");
-            const [resultado, setResultado] = useState(null);
-
-            const consultar = () => {
-                setResultado(null);
-                if(!cedula.trim()) {
-                    setResultado({error: "Por favor ingresa tu número de documento"});
-                    return;
-                }
-                const encontrado = aspirantes.find(a => a.cedula === cedula.trim());
-                if(encontrado) setResultado(encontrado);
-                else setResultado({error: "Documento no registrado o en proceso de carga"});
-            };
-
             return (
-                <div className="min-h-screen bg-slate-50">
-                    {/* BARRA DE NAVEGACIÓN UNIFICADA */}
-                    <header className="bg-[#2B3A24] text-white shadow-lg border-b-4 border-[#D4AF37] sticky top-0 z-50">
-                        <div className="max-w-7xl mx-auto px-5 md:px-8 py-4 flex flex-col md:flex-row justify-between items-center gap-3">
+                <div className="min-h-screen flex flex-col">
+                    {/* ======================================
+                        BARRA DE NAVEGACIÓN INSTITUCIONAL
+                        ======================================= */}
+                    <header className="bg-ejercito-dark text-white shadow-xl border-b-4 border-oro-oficial sticky top-0 z-50">
+                        <div className="max-w-7xl mx-auto px-5 md:px-8 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+                            
+                            {/* LOGO Y TÍTULO INSTITUCIONAL */}
                             <div className="flex items-center gap-4">
-                                <div className="w-11 h-11 bg-white rounded-full flex items-center justify-center p-1 shadow-inner text-[#2B3A24]">
-                                    <i data-lucide="shield-check" className="w-7 h-7"></i>
+                                <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center p-0.5 border-2 border-oro-oficial shadow-md">
+                                    <img 
+                                        src="escudo_ejercito_nacional_colombia.png" 
+                                        alt="Escudo Oficial - Ejército Nacional de Colombia"
+                                        className="w-full h-full object-contain"
+                                        onError={(e) => {
+                                            e.target.style.display = 'none';
+                                            e.target.nextSibling.style.display = 'flex';
+                                        }}
+                                    />
+                                    <div className="hidden w-full h-full items-center justify-center">
+                                        <i data-lucide="shield-check" className="w-8 h-8 text-ejercito-dark"></i>
+                                    </div>
                                 </div>
                                 <div>
-                                    <h1 className="text-xl font-bold tracking-wide uppercase">Ejército Nacional de Colombia</h1>
-                                    <p className="text-[#D4AF37] font-medium tracking-widest text-xs">Casas Fiscales - Contratación Oficial</p>
+                                    <h1 className="text-xl md:text-2xl font-bold tracking-wide uppercase">EJÉRCITO NACIONAL DE COLOMBIA</h1>
+                                    <p className="text-oro-oficial font-medium tracking-widest text-xs md:text-sm">Casas Fiscales - Contratación Oficial</p>
                                 </div>
                             </div>
-                            <nav className="flex flex-wrap gap-3 text-sm font-medium">
-                                <a href="index.html" className="hover:text-[#D4AF37] transition-colors">Inicio</a>
-                                <a href="convocatoria.html" className="hover:text-[#D4AF37] transition-colors">Convocatoria</a>
-                                <a href="requisitos.html" className="hover:text-[#D4AF37] transition-colors">Requisitos</a>
-                                <a href="proceso-seleccion.html" className="hover:text-[#D4AF37] transition-colors">Proceso</a>
-                                <a href="consulta-tramite.html" className="text-[#D4AF37] font-semibold">Consulta Trámite</a>
-                                <a href="perfiles-validados.html" className="hover:text-[#D4AF37] transition-colors">Perfiles</a>
-                                <a href="contacto.html" className="hover:text-[#D4AF37] transition-colors">Contacto</a>
+
+                            {/* ENLACES DE NAVEGACIÓN COMPLETOS Y ORDENADOS */}
+                            <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm md:text-base font-medium">
+                                <a href="index.html" className="text-oro-oficial font-semibold border-b-2 border-oro-oficial pb-1 md:border-none">Inicio</a>
+                                <a href="convocatoria.html" className="hover:text-oro-oficial transition-colors neuro-hover">Convocatoria</a>
+                                <a href="requisitos.html" className="hover:text-oro-oficial transition-colors neuro-hover">Requisitos</a>
+                                <a href="proceso-seleccion.html" className="hover:text-oro-oficial transition-colors neuro-hover">Proceso de Selección</a>
+                                <a href="consulta-tramite.html" className="hover:text-oro-oficial transition-colors neuro-hover">Consulta tu Trámite</a>
+                                <a href="perfiles-validados.html" className="hover:text-oro-oficial transition-colors neuro-hover">Perfiles Validados</a>
+                                <a href="contacto.html" className="hover:text-oro-oficial transition-colors neuro-hover">Contacto</a>
                             </nav>
                         </div>
                     </header>
 
-                    {/* CONTENIDO PRINCIPAL */}
-                    <main className="max-w-2xl mx-auto px-5 py-12">
-                        <h2 className="text-3xl font-bold text-[#2B3A24] mb-2 text-center">Consulta el Estado de tu Trámite</h2>
-                        <p className="text-center text-slate-600 mb-8">Ingresa tu número de documento de identidad para verificar tu postulación</p>
+                    {/* ======================================
+                        SECCIÓN PRINCIPAL - PRESENTACIÓN
+                        ======================================= */}
+                    <main className="flex-grow max-w-6xl mx-auto w-full px-5 py-16 text-center">
+                        <h2 className="text-5xl md:text-7xl font-extrabold text-ejercito-dark mb-8 tracking-tight">
+                            Casas Fiscales
+                        </h2>
+                        <p className="text-xl md:text-2xl text-slate-700 mb-12 leading-relaxed max-w-3xl mx-auto">
+                            Un compromiso con la seguridad, el bienestar de las familias y el desarrollo profesional del Ejército Nacional de Colombia.
+                        </p>
 
-                        {/* BUSCADOR */}
-                        <div className="bg-white p-6 rounded-xl shadow-md mb-8">
-                            <div className="flex flex-col sm:flex-row gap-3">
-                                <input 
-                                    type="text" 
-                                    value={cedula}
-                                    onChange={(e)=>setCedula(e.target.value)}
-                                    placeholder="Número de Cédula"
-                                    className="flex-1 px-4 py-3 border border-slate-300 rounded-lg text-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent"
-                                />
-                                <button 
-                                    onClick={consultar}
-                                    className="px-6 py-3 bg-[#2B3A24] text-white rounded-lg font-medium hover:bg-[#3d4e33] transition-colors flex items-center gap-2"
-                                >
-                                    <i data-lucide="search" className="w-5 h-5"></i>
-                                    Consultar
-                                </button>
-                            </div>
+                        {/* BOTONES DE ACCIÓN PRINCIPALES */}
+                        <div className="flex flex-col sm:flex-row justify-center gap-5 mb-20">
+                            <a href="convocatoria.html" className="px-10 py-4 bg-oro-oficial text-ejercito-dark rounded-lg font-bold text-lg hover:bg-oro-claro transition-all duration-300 shadow-lg neuro-hover transform hover:-translate-y-0.5">
+                                Ver Convocatoria Laboral
+                            </a>
+                            <a href="requisitos.html" className="px-10 py-4 border-2 border-ejercito-dark text-ejercito-dark rounded-lg font-medium text-lg hover:bg-ejercito-dark hover:text-white transition-all duration-300 neuro-hover">
+                                Conocer Requisitos
+                            </a>
                         </div>
 
-                        {/* RESULTADO COMPLETO */}
-                        {resultado && (
-                            <div className={`p-6 rounded-xl shadow-md border ${resultado.error ? "bg-red-50 border-red-200" : "bg-green-50 border-green-300"}`}>
-                                {resultado.error ? (
-                                    <p className="text-red-700 text-center font-medium">{resultado.error}</p>
-                                ) : (
-                                    <div className="space-y-4">
-                                        <div className="flex items-center gap-2">
-                                            <i data-lucide="check-circle" className="w-6 h-6 text-green-600"></i>
-                                            <h3 className="text-xl font-bold text-[#2B3A24]">{resultado.nombre}</h3>
-                                        </div>
-
-                                        {/* DATOS COMPLETOS DE LA HOJA DE VIDA */}
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-slate-700">
-                                            <p><strong>Cédula:</strong> {resultado.cedula}</p>
-                                            <p><strong>Fecha de nacimiento:</strong> {resultado.nacimiento}</p>
-                                            <p><strong>Lugar:</strong> {resultado.lugar_nacimiento}</p>
-                                            <p><strong>Dirección:</strong> {resultado.direccion}</p>
-                                            <p><strong>Teléfono:</strong> {resultado.telefono}</p>
-                                            <p><strong>Estado civil:</strong> {resultado.estado_civil}</p>
-                                            <p className="md:col-span-2"><strong>Correo:</strong> {resultado.correo}</p>
-                                        </div>
-
-                                        <div className="bg-slate-50 p-3 rounded-lg border border-slate-200">
-                                            <p className="font-semibold text-[#2B3A24] mb-1">Perfil:</p>
-                                            <p className="text-sm text-slate-700 leading-relaxed">{resultado.perfil}</p>
-                                        </div>
-
-                                        <p className="text-slate-700"><strong>Cargo:</strong> {resultado.cargo}</p>
-                                        <p className="text-slate-700"><strong>Ubicación:</strong> {resultado.ubicacion}</p>
-
-                                        <div className="bg-green-100 p-3 rounded-lg border border-green-200">
-                                            <p className="font-bold text-green-800 text-lg">{resultado.estado}</p>
-                                            <p className="text-green-700 mt-1">{resultado.detalle}</p>
-                                        </div>
-
-                                        {/* BOTÓN DIRECTO AL ARCHIVO */}
-                                        <a 
-                                            href={resultado.archivo_hv} 
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-2 px-5 py-3 bg-[#D4AF37] text-[#2B3A24] rounded-lg font-bold hover:bg-amber-500 transition-colors"
-                                        >
-                                            <i data-lucide="file-text" className="w-5 h-5"></i>
-                                            Ver / Descargar Hoja de Vida
-                                        </a>
-
-                                        <p className="text-xs text-slate-500 italic mt-2">Información oficial – Casas Fiscales Ejército Nacional</p>
-                                    </div>
-                                )}
-                            </div>
-                        )}
+                        {/* SECCIÓN INFORMATIVA ADICIONAL */}
+                        <div className="bg-white p-8 rounded-xl shadow-md border border-slate-200 max-w-4xl mx-auto">
+                            <h3 className="text-2xl font-bold text-ejercito-dark mb-4">¿Qué buscamos?</h3>
+                            <p className="text-slate-700 text-lg leading-relaxed">
+                                Seleccionamos personal responsable, cariñoso y comprometido para el cuidado de los hijos de los funcionarios, garantizando un entorno seguro, digno y acorde a los valores institucionales del Ejército Nacional.
+                            </p>
+                        </div>
                     </main>
 
-                    {/* PIE DE PÁGINA */}
-                    <footer className="bg-[#2B3A24] text-white py-6 mt-10">
-                        <div className="max-w-7xl mx-auto px-5 text-center text-sm">
-                            <p>© 2026 Casas Fiscales - Ejército Nacional de Colombia | Todos los derechos reservados</p>
-                            <p className="mt-2">🔗 Sitio oficial: casasfiscales-ejercito-nacional.netlify.app</p>
-                            <p className="mt-2 text-amber-300 italic">⚠️ ADVERTENCIA: llame a nuestra línea 311 862 2875.</p>
+                    {/* ======================================
+                        PIE DE PÁGINA COMPLETO
+                        ======================================= */}
+                    <footer className="bg-ejercito-dark text-white py-8 mt-10">
+                        <div className="max-w-7xl mx-auto px-5 text-center text-sm md:text-base">
+                            <p className="mb-2">© 2026 Casas Fiscales - Ejército Nacional de Colombia | Todos los derechos reservados</p>
+                            <p className="mb-2">🔗 Sitio oficial: <a href="https://casasfiscales-ejercito-nacional.netlify.app" target="_blank" rel="noopener noreferrer" className="text-oro-oficial hover:underline">casasfiscales-ejercito-nacional.netlify.app</a></p>
+                            <p className="mt-3 text-amber-300 italic font-medium">⚠️ ADVERTENCIA: Comunicarse únicamente a la línea oficial 311 862 2875. No se realizan cobros ni solicitudes de dinero por este medio.</p>
                         </div>
                     </footer>
                 </div>
