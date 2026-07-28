@@ -33,7 +33,8 @@
             useEffect(() => {
                 if (window.lucide?.createIcons) window.lucide.createIcons();
             }, []);
-// 📌 BASE DE DATOS ACTUALIZADA CON LAS 4 ASPIRANTES
+
+// 📌 BASE DE DATOS ACTUALIZADA Y SIN ERRORES
 const aspirantes = [
     {
         cedula: "1068578253",
@@ -102,8 +103,8 @@ const aspirantes = [
         detalle: "En revisión de documentación y verificación de requisitos",
         hv: "Hoja de vida recibida, Bachiller año 2024",
         archivo_hv: "hojadevida_mariaandreaortegaanaya_1129184230.pdf"
-    }
-        {
+    },
+    {
         cedula: "1002156367",
         nombre: "Yuldama María Cárdenas Burgos",
         nacimiento: "15 de enero de 1991",
@@ -119,13 +120,8 @@ const aspirantes = [
         detalle: "En revisión de títulos y certificaciones",
         hv: "Hoja de vida recibida con título técnico y cursos certificados",
         archivo_hv: "hojadevida_yuldamamariacardenasburgos_1002156367.pdf"
-}
-            
+    }
 ];
-
-
-
-            ]:
 
             const [cedula, setCedula] = useState("");
             const [resultado, setResultado] = useState(null);
