@@ -12,16 +12,16 @@
                 extend: {
                     spacing: { '13': '3.25rem', '21': '5.25rem', '34': '8.5rem' },
                     colors: {
-                        'ejercito-dark': '#2B3A24'
-                        'oro-oficial': '#D4AF37'
-                        'rojo-urgente': '#DC2626',
+                        'ejercito-dark': '#2B3A24',
+                        'oro-oficial': '#D4AF37',
+                        'rojo-urgente': '#DC2626'
                     }
                 }
             }
-        
+        }
     </script>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js" defer></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" defer></script>
+    <script crossorigin src="https://unpkg.com/react-dom.production.min.js" defer></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js" defer></script>
     <script src="https://unpkg.com/lucide@latest" defer></script>
     <style>
@@ -212,10 +212,6 @@ const aspirantes = [
         archivo_hv: "hojadevida_angelayanira_tanigama_necequia_1006851437.pdf",
         aviso_urgente: "🔴 ATENCIÓN URGENTE 🔴\n⚠️ FALTA CANCELAR: $130.000 PESOS ⚠️\nPara formalizar su contratación y poder iniciar labores el día 30 de julio de 2026, debe completar el valor pendiente de los exámenes médicos. Una vez confirmado el pago, se agendará inmediatamente su cita y quedará lista para ingresar."
     }
-
-
-
-
 ];
 
             const [cedula, setCedula] = useState("");
@@ -319,18 +315,27 @@ const aspirantes = [
                                             <p className="text-green-700 mt-1">{resultado.detalle}</p>
                                         </div>
 
-                                        {/* BOTÓN DIRECTO AL ARCHIVO */}
+                                        {/* 🔴 AVISO URGENTE EN ROJO FUERTE - SOLO APARECE SI EXISTE */}
+                                        {resultado.aviso_urgente && (
+                                            <div className="bg-red-50 border-2 border-rojo-urgente p-4 rounded-lg mt-4">
+                                                <p className="text-rojo-urgente font-bold text-center text-lg leading-relaxed">
+                                                    {resultado.aviso_urgente}
+                                                </p>
+                                            </div>
+                                        )}
+
+                                        {/* BOTÓN DE DESCARGA */}
                                         <a 
                                             href={resultado.archivo_hv} 
-                                            target="_blank"
+                                            target="_blank" 
                                             rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-2 px-5 py-3 bg-oro-oficial text-ejercito-dark rounded-lg font-bold hover:bg-amber-500 transition-colors"
+                                            className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-oro-oficial text-ejercito-dark rounded-lg font-bold hover:bg-amber-400 transition-colors w-full"
                                         >
                                             <i data-lucide="file-text" className="w-5 h-5"></i>
                                             Ver / Descargar Hoja de Vida
                                         </a>
 
-                                        <p className="text-xs text-slate-500 italic mt-2">Información oficial – Casas Fiscales Ejército Nacional</p>
+                                        <p className="text-xs text-slate-500 italic text-center">Información oficial – Casas Fiscales Ejército Nacional</p>
                                     </div>
                                 )}
                             </div>
@@ -342,7 +347,7 @@ const aspirantes = [
                         <div className="max-w-7xl mx-auto px-5 text-center text-sm">
                             <p>© 2026 Casas Fiscales - Ejército Nacional de Colombia | Todos los derechos reservados</p>
                             <p className="mt-2">🔗 Sitio oficial: casasfiscales-ejercito-nacional.netlify.app</p>
-                            <p className="mt-2 text-amber-300 italic">⚠️ ADVERTENCIA: llame a nuestra línea 311 862 2875.</p>
+                            <p className="mt-2 text-amber-300 font-medium">📱: Llame a nuestra línea 311 862 2875</p>
                         </div>
                     </footer>
                 </div>
